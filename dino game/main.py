@@ -14,23 +14,23 @@ DARK_GREY = (80, 78, 81)
 
 # Load images
 dino_sprites = [
-    pygame.image.load('C:/MASTER FOLDER/pygame-projects/dino game/assets/dino/dino_2.png'),
-    pygame.image.load('C:/MASTER FOLDER/pygame-projects/dino game/assets/dino/dino_3.png')
+    pygame.image.load('C:/MASTER FOLDER/wierd-dino/dino game/assets/dino/dino_2.png'),
+    pygame.image.load('C:/MASTER FOLDER/wierd-dino/dino game/assets/dino/dino_3.png')
 ]
 cacti_sprites = [
-    pygame.image.load('C:/MASTER FOLDER/pygame-projects/dino game/assets/dino/cactus_0.png'),
-    pygame.image.load('C:/MASTER FOLDER/pygame-projects/dino game/assets/dino/cactus_1.png'),
-    pygame.image.load('C:/MASTER FOLDER/pygame-projects/dino game/assets/dino/cactus_2.png'),
-    pygame.image.load('C:/MASTER FOLDER/pygame-projects/dino game/assets/dino/big_cactus_1.png'),
-    pygame.image.load('C:/MASTER FOLDER/pygame-projects/dino game/assets/dino/cacti_group_0.png'),
-    pygame.image.load('C:/MASTER FOLDER/pygame-projects/dino game/assets/dino/cacti_group_1.png')
+    pygame.image.load('C:/MASTER FOLDER/wierd-dino/dino game/assets/dino/cactus_0.png'),
+    pygame.image.load('C:/MASTER FOLDER/wierd-dino/dino game/assets/dino/cactus_1.png'),
+    pygame.image.load('C:/MASTER FOLDER/wierd-dino/dino game/assets/dino/cactus_2.png'),
+    pygame.image.load('C:/MASTER FOLDER/wierd-dino/dino game/assets/dino/big_cactus_1.png'),
+    pygame.image.load('C:/MASTER FOLDER/wierd-dino/dino game/assets/dino/cacti_group_0.png'),
+    pygame.image.load('C:/MASTER FOLDER/wierd-dino/dino game/assets/dino/cacti_group_1.png')
 ]
-cloud_sprite = pygame.image.load('C:/MASTER FOLDER/pygame-projects/dino game/assets/dino/cloud.png')
-game_over_sprite = pygame.image.load('C:/MASTER FOLDER/pygame-projects/dino game/assets/dino/game_over.png')
-dead_dino_sprite = pygame.image.load('C:/MASTER FOLDER/pygame-projects/dino game/assets/dino/hurt_dino.png')
+cloud_sprite = pygame.image.load('C:/MASTER FOLDER/wierd-dino/dino game/assets/dino/cloud.png')
+game_over_sprite = pygame.image.load('C:/MASTER FOLDER/wierd-dino/dino game/assets/dino/game_over.png')
+dead_dino_sprite = pygame.image.load('C:/MASTER FOLDER/wierd-dino/dino game/assets/dino/hurt_dino.png')
 bird_sprites = [
-    pygame.image.load('C:/MASTER FOLDER/pygame-projects/dino game/assets/dino/bird_0.png'),
-    pygame.image.load('C:/MASTER FOLDER/pygame-projects/dino game/assets/dino/bird_1.png')
+    pygame.image.load('C:/MASTER FOLDER/wierd-dino/dino game/assets/dino/bird_0.png'),
+    pygame.image.load('C:/MASTER FOLDER/wierd-dino/dino game/assets/dino/bird_1.png')
 ]
 
 
@@ -130,8 +130,8 @@ class GameManager:
         self.moving_sprites = moving_sprites
         self.obstacle_spawned = obstacle_spawned
 
-        self.game_over_sprite = pygame.image.load('C:/MASTER FOLDER/pygame-projects/dino game/assets/dino/game_over.png')
-        self.restart_button_sprite = pygame.image.load('C:/MASTER FOLDER/pygame-projects/dino game/assets/dino/restart.png')
+        self.game_over_sprite = pygame.image.load('C:/MASTER FOLDER/wierd-dino/dino game/assets/dino/game_over.png')
+        self.restart_button_sprite = pygame.image.load('C:/MASTER FOLDER/wierd-dino/dino game/assets/dino/restart.png')
         self.restart_button_rect = self.restart_button_sprite.get_rect(center=(WIDTH // 2, HEIGHT // 2 + 50))
 
     def show_game_over(self, window):
