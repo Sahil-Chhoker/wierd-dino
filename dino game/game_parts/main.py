@@ -1,5 +1,6 @@
 import pygame, pymunk
 import random
+import math
 from dino import Dino
 from obstacle import Obstacle
 from cloud import Cloud
@@ -53,6 +54,8 @@ def main():
 
     BIRD_EVENT = pygame.USEREVENT + 1
     pygame.time.set_timer(BIRD_EVENT, 15000)
+
+    prev_mouse_pos = None
 
     while run:
         clock.tick(60)
@@ -109,14 +112,8 @@ def main():
             birds.update(dx)
             birds.draw(WIN)
 
-        # Check for collisions with obstacles
-        mouse_pos = pygame.mouse.get_pos()
-        for obstacle in obstacles:
-            collision = space.point_query_nearest(mouse_pos, 10, pymunk.ShapeFilter())
-            if collision:
-                print("got him")
-                impulse = collision.point - obstacle.shape.body.position
-                obstacle.shape.body.apply_impulse_at_local_point(-impulse * 1000, (0, 0))
+        # Apply force based on mouse pointer velocity
+        # LOGIC
 
         # Draw mouse pointer
         pygame.draw.circle(WIN, (255, 0, 0), mouse_pos, 10)
