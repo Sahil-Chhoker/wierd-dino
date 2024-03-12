@@ -1,10 +1,11 @@
 import pygame
 
 class GameManager:
-    def __init__(self, dino, obstacles, cloud_list, moving_sprites, obstacle_spawned, WIDTH, HEIGHT):
+    def __init__(self, dino, obstacles, cloud_list, birds, moving_sprites, obstacle_spawned, WIDTH, HEIGHT):
         self.dino = dino
         self.obstacles = obstacles
         self.cloud_list = cloud_list
+        self.birds = birds
         self.moving_sprites = moving_sprites
         self.obstacle_spawned = obstacle_spawned
         self.WIDTH = WIDTH
@@ -26,5 +27,7 @@ class GameManager:
         self.obstacle_spawned = False
         self.dino.rect.topleft = (100, 100)
         self.dino.collided_with_obstacle = False
+        self.dino.collided_with_bird = False
         self.obstacles.empty()
         self.cloud_list.empty()
+        self.birds.empty()

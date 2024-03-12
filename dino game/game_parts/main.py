@@ -39,7 +39,7 @@ def main():
 
     obstacle_spawned = False
 
-    game_manager = GameManager(dino, obstacles, cloud_list, moving_sprites, obstacle_spawned, WIDTH, HEIGHT)
+    game_manager = GameManager(dino, obstacles, cloud_list, birds, moving_sprites, obstacle_spawned, WIDTH, HEIGHT)
 
     BIRD_EVENT = pygame.USEREVENT + 1
     pygame.time.set_timer(BIRD_EVENT, 15000)
@@ -66,7 +66,7 @@ def main():
         ground.draw(WIN)
 
         # Update and draw sprites and gameover logic
-        if dino.collided_with_obstacle:
+        if dino.collided_with_obstacle or dino.collided_with_bird:
             WIN.blit(dead_dino_sprite, dino.rect)
             game_manager.show_game_over(WIN)
         else:
@@ -86,7 +86,7 @@ def main():
             game_manager.obstacle_spawned = False
 
         # Cloud logic
-        if not dino.collided_with_obstacle:
+        if not dino.collided_with_obstacle and not dino.collided_with_bird:
             cloud = Cloud(WIDTH, random.randint(40, 100), game_speed)
             if random.randint(0, 100) < 3:
                 cloud_list.add(cloud)
@@ -100,7 +100,7 @@ def main():
             birds.draw(WIN)
 
         # Die logic
-        dino.die(obstacles, cloud_list)
+        dino.die(obstacles, cloud_list, birds)
 
         # Update the screen
         pygame.display.update()

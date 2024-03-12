@@ -15,6 +15,7 @@ class Dino(pygame.sprite.Sprite):
         self.rect = self.image.get_rect(topleft=(pos_x, pos_y))
         self.vel_y = 0
         self.collided_with_obstacle = False
+        self.collided_with_bird = False
 
         self.rect.width -= 10
         self.rect.height -= 10
@@ -28,7 +29,7 @@ class Dino(pygame.sprite.Sprite):
         if self.rect.bottom == self.HEIGHT - 36:
             self.vel_y = -jump_force
 
-    def die(self, obstacles, cloud_list):
+    def die(self, obstacles, cloud_list, birds):
         if not self.collided_with_obstacle:
             for obstacle in obstacles:
                 collide = self.rect.colliderect(obstacle.rect)
@@ -37,6 +38,18 @@ class Dino(pygame.sprite.Sprite):
                     obstacle.is_updating = False
                     for cloud in cloud_list:
                         cloud.is_updating = False
+                    break
+        
+        if not self.collided_with_bird:
+            for bird in birds:
+                collide = self.rect.colliderect(bird.rect)
+                if collide:
+                    self.collided_with_bird = True
+                    bird.is_moving = False
+                    for cloud in cloud_list:
+                        cloud.is_updating = False
+                    for obstacle in obstacles:
+                        obstacle.is_updating = False
                     break
 
     def animate(self):
