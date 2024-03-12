@@ -1,4 +1,4 @@
-import pygame
+import pygame, pymunk
 import random
 from dino import Dino
 from obstacle import Obstacle
