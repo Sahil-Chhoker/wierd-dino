@@ -18,6 +18,14 @@ space = pymunk.Space()
 
 dead_dino_sprite = pygame.image.load('C:/MASTER FOLDER/wierd-dino/dino game/assets/dino/hurt_dino.png')
 
+# Create a Pymunk circle for the mouse pointer
+mouse_body = pymunk.Body(body_type=pymunk.Body.KINEMATIC)
+mouse_shape = pymunk.Circle(mouse_body, 10)  
+mouse_shape.friction = 1.0
+mouse_shape.elasticity = 0.0
+mouse_shape.collision_type = 2
+space.add(mouse_body, mouse_shape)
+
 # Colors
 WHITE = (255, 255, 255)
 
@@ -100,6 +108,18 @@ def main():
             bird.move(game_speed * 1.5)
             birds.update(dx)
             birds.draw(WIN)
+
+        # Check for collisions with obstacles
+        mouse_pos = pygame.mouse.get_pos()
+        for obstacle in obstacles:
+            collision = space.point_query_nearest(mouse_pos, 10, pymunk.ShapeFilter())
+            if collision:
+                print("got him")
+                impulse = collision.point - obstacle.shape.body.position
+                obstacle.shape.body.apply_impulse_at_local_point(-impulse * 1000, (0, 0))
+
+        # Draw mouse pointer
+        pygame.draw.circle(WIN, (255, 0, 0), mouse_pos, 10)
 
         # Die logic
         dino.die(obstacles, cloud_list, birds)
