@@ -14,6 +14,8 @@ WIDTH, HEIGHT = 800, 600
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Weird Dino")
 
+space = pymunk.Space()
+
 dead_dino_sprite = pygame.image.load('C:/MASTER FOLDER/wierd-dino/dino game/assets/dino/hurt_dino.png')
 
 # Colors
@@ -76,10 +78,10 @@ def main():
 
         # Obstacle logic
         if not game_manager.obstacle_spawned:
-            obstacle = Obstacle(WIDTH, HEIGHT - ground.height + 20, game_speed)
+            obstacle = Obstacle(WIDTH, HEIGHT - ground.height + 20, game_speed, 10, space)
             obstacles.add(obstacle)
             game_manager.obstacle_spawned = True
-        obstacles.update()
+        obstacles.update() 
         obstacles.draw(WIN)
         if obstacle.rect.x + 50 < 0:
             obstacles.remove(obstacle)
@@ -101,6 +103,8 @@ def main():
 
         # Die logic
         dino.die(obstacles, cloud_list, birds)
+
+        space.step(1/60)
 
         # Update the screen
         pygame.display.update()
