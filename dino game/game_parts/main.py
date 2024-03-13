@@ -20,7 +20,7 @@ space = pymunk.Space()
 dead_dino_sprite = pygame.image.load('C:/MASTER FOLDER/wierd-dino/dino game/assets/dino/hurt_dino.png')
 
 # Create a Pymunk circle for the mouse pointer
-mouse_body = pymunk.Body(body_type=pymunk.Body.KINEMATIC)
+mouse_body = pymunk.Body()
 mouse_shape = pymunk.Circle(mouse_body, 10)  
 mouse_shape.friction = 1.0
 mouse_shape.elasticity = 0.0
@@ -29,6 +29,17 @@ space.add(mouse_body, mouse_shape)
 
 # Colors
 WHITE = (255, 255, 255)
+
+def collide(arbiter, space, data):
+    obstacle_shape, mouse_shape = arbiter.shapes
+    obstacle_body = obstacle_shape.body
+    
+
+    # Apply an impulse to the obstacle body based on the mouse pointer's velocity
+    mouse_velocity = mouse_body.velocity
+    obstacle_body.apply_impulse_at_local_point(mouse_velocity, (1000, 0))
+
+    return True
 
 def main():
     run = True
@@ -56,6 +67,9 @@ def main():
     pygame.time.set_timer(BIRD_EVENT, 15000)
 
     prev_mouse_pos = None
+
+    handler = space.add_collision_handler(1, 2)
+    handler.separate = collide
 
     while run:
         clock.tick(60)
@@ -91,6 +105,7 @@ def main():
         if not game_manager.obstacle_spawned:
             obstacle = Obstacle(WIDTH, HEIGHT - ground.height + 20, game_speed, 10, space)
             obstacles.add(obstacle)
+            # space.add(obstacle.body, obstacle.shape)
             game_manager.obstacle_spawned = True
         obstacles.update() 
         obstacles.draw(WIN)
@@ -113,7 +128,11 @@ def main():
             birds.draw(WIN)
 
         # Apply force based on mouse pointer velocity
-        # LOGIC
+        mouse_pos = pygame.mouse.get_pos()
+        if prev_mouse_pos:
+            mouse_velocity = (mouse_pos[0] - prev_mouse_pos[0], mouse_pos[1] - prev_mouse_pos[1])
+            mouse_body.velocity = mouse_velocity
+        prev_mouse_pos = mouse_pos
 
         # Draw mouse pointer
         pygame.draw.circle(WIN, (255, 0, 0), mouse_pos, 10)
