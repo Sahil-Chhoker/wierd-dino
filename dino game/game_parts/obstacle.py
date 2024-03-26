@@ -2,12 +2,12 @@ import pygame, pymunk
 import random
 
 cacti_sprites = [
-    pygame.image.load('C:/MASTER FOLDER/wierd-dino/dino game/assets/dino/cactus_0.png'),
-    pygame.image.load('C:/MASTER FOLDER/wierd-dino/dino game/assets/dino/cactus_1.png'),
-    pygame.image.load('C:/MASTER FOLDER/wierd-dino/dino game/assets/dino/cactus_2.png'),
-    pygame.image.load('C:/MASTER FOLDER/wierd-dino/dino game/assets/dino/big_cactus_1.png'),
-    pygame.image.load('C:/MASTER FOLDER/wierd-dino/dino game/assets/dino/cacti_group_0.png'),
-    pygame.image.load('C:/MASTER FOLDER/wierd-dino/dino game/assets/dino/cacti_group_1.png')
+    pygame.image.load('C:/MASTER FOLDER/GitHub/wierd-dino/dino game/assets/dino/cactus_0.png'),
+    pygame.image.load('C:/MASTER FOLDER/GitHub/wierd-dino/dino game/assets/dino/cactus_1.png'),
+    pygame.image.load('C:/MASTER FOLDER/GitHub/wierd-dino/dino game/assets/dino/cactus_2.png'),
+    pygame.image.load('C:/MASTER FOLDER/GitHub/wierd-dino/dino game/assets/dino/big_cactus_1.png'),
+    pygame.image.load('C:/MASTER FOLDER/GitHub/wierd-dino/dino game/assets/dino/cacti_group_0.png'),
+    pygame.image.load('C:/MASTER FOLDER/GitHub/wierd-dino/dino game/assets/dino/cacti_group_1.png')
 ]
 
 obstacle_sprite = pygame.Surface((50, 50))
@@ -19,7 +19,8 @@ class Obstacle(pygame.sprite.Sprite):
         self.is_updating = True
         self.space = space
         self.mass = mass
-        self.image = obstacle_sprite
+        self.image = random.choice(cacti_sprites)
+        # self.image = obstacle_sprite
         self.rect = self.image.get_rect(bottomleft=(pos_x, pos_y))
         self.speed = speed
 

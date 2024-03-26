@@ -1,7 +1,7 @@
 import pygame
 import random
 
-cloud_sprite = pygame.image.load('C:/MASTER FOLDER/wierd-dino/dino game/assets/dino/cloud.png')
+cloud_sprite = pygame.image.load('C:/MASTER FOLDER/GitHub/wierd-dino/dino game/assets/dino/cloud.png')
 
 class Cloud(pygame.sprite.Sprite):
     def __init__(self, posx, posy, speed):

@@ -1,8 +1,8 @@
 import pygame
 
 bird_sprites = [
-    pygame.image.load('C:/MASTER FOLDER/wierd-dino/dino game/assets/dino/bird_0.png'),
-    pygame.image.load('C:/MASTER FOLDER/wierd-dino/dino game/assets/dino/bird_1.png')
+    pygame.image.load('C:/MASTER FOLDER/GitHub/wierd-dino/dino game/assets/dino/bird_0.png'),
+    pygame.image.load('C:/MASTER FOLDER/GitHub/wierd-dino/dino game/assets/dino/bird_1.png')
 ]
 
 class Bird(pygame.sprite.Sprite):

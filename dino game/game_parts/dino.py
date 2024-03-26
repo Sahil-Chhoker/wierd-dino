@@ -1,10 +1,10 @@
 import pygame
 
 dino_sprites = [
-    pygame.image.load('C:/MASTER FOLDER/wierd-dino/dino game/assets/dino/dino_2.png'),
-    pygame.image.load('C:/MASTER FOLDER/wierd-dino/dino game/assets/dino/dino_3.png')
+    pygame.image.load('C:/MASTER FOLDER/GitHub/wierd-dino/dino game/assets/dino/dino_2.png'),
+    pygame.image.load('C:/MASTER FOLDER/GitHub/wierd-dino/dino game/assets/dino/dino_3.png')
 ]
-dead_dino_sprite = pygame.image.load('C:/MASTER FOLDER/wierd-dino/dino game/assets/dino/hurt_dino.png')
+dead_dino_sprite = pygame.image.load('C:/MASTER FOLDER/GitHub/wierd-dino/dino game/assets/dino/hurt_dino.png')
 
 class Dino(pygame.sprite.Sprite):
     def __init__(self, pos_x, pos_y, sprite_group, HEIGHT):

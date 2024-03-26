@@ -11,8 +11,8 @@ class GameManager:
         self.WIDTH = WIDTH
         self.HEIGHT = HEIGHT
 
-        self.game_over_sprite = pygame.image.load('C:/MASTER FOLDER/wierd-dino/dino game/assets/dino/game_over.png')
-        self.restart_button_sprite = pygame.image.load('C:/MASTER FOLDER/wierd-dino/dino game/assets/dino/restart.png')
+        self.game_over_sprite = pygame.image.load('C:/MASTER FOLDER/GitHub/wierd-dino/dino game/assets/dino/game_over.png')
+        self.restart_button_sprite = pygame.image.load('C:/MASTER FOLDER/GitHub/wierd-dino/dino game/assets/dino/restart.png')
         self.restart_button_rect = self.restart_button_sprite.get_rect(center=(self.WIDTH // 2, self.HEIGHT // 2 + 50))
 
     def show_game_over(self, window):

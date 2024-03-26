@@ -17,7 +17,7 @@ pygame.display.set_caption("Weird Dino")
 
 space = pymunk.Space()
 
-dead_dino_sprite = pygame.image.load('C:/MASTER FOLDER/wierd-dino/dino game/assets/dino/hurt_dino.png')
+dead_dino_sprite = pygame.image.load('C:/MASTER FOLDER/GitHub/wierd-dino/dino game/assets/dino/hurt_dino.png')
 
 # Create a Pymunk circle for the mouse pointer
 mouse_body = pymunk.Body()
